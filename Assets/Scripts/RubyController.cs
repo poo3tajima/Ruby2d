@@ -18,19 +18,39 @@ public class RubyController : MonoBehaviour
 
     Rigidbody2D rb;
 
+    Animator anim;
+    Vector2 lookDirection = new Vector2(1f, 0);
+
+    public GameObject prefab;
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
+        anim = GetComponent<Animator>();
     }
 
 
     void Update()
     {
         // 直接値を入力できないので、変数にいれてからｘｙ座標にいれる
+        // GetAxisの値は-1～1
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
+
+        Vector2 move = new Vector2(horizontal, vertical);
+
+        if (move.sqrMagnitude > 0f)
+        {
+            lookDirection.Set(move.x, move.y);
+            lookDirection.Normalize();
+        }
+
+        anim.SetFloat("Look X", lookDirection.x);
+        anim.SetFloat("Look Y", lookDirection.y);
+        anim.SetFloat("Speed", move.magnitude);
+
         Vector2 position = rb.position;
         position.x = position.x + speed * horizontal * Time.deltaTime;
         position.y = position.y + speed * vertical * Time.deltaTime;
@@ -40,11 +60,10 @@ public class RubyController : MonoBehaviour
         {
             invincibleTimer -= Time.deltaTime;
 
-            if (invincibleTimer < 0)
-            {
-                isInvincible = false;
-            }
+            if (invincibleTimer < 0) { isInvincible = false; }
         }
+
+        if (Input.GetKeyDown(KeyCode.C)) { Launch(); }
     }
 
 
@@ -58,10 +77,24 @@ public class RubyController : MonoBehaviour
 
             isInvincible = true;
             invincibleTimer = timeInvincible;
+            anim.SetTrigger("Hit");
         }
 
         // HPは0～maxの間にクランプしている
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
+    }
+
+
+    void Launch()
+    {
+        GameObject cogBullet = Instantiate(
+            prefab,
+            rb.position + Vector2.up * 0.5f,
+            Quaternion.identity
+        );
+        CogBulletController cogCon = cogBullet.GetComponent<CogBulletController>();
+        cogCon.Launch(lookDirection, 5f);
+        anim.SetTrigger("Launch");
     }
 }

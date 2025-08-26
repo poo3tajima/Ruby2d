@@ -340,7 +340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4004463281073511441, guid: 9c59eef14a3576f4fb154b4a15e1ec61, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.7
+      value: 7.25
       objectReference: {fileID: 0}
     - target: {fileID: 4004463281073511441, guid: 9c59eef14a3576f4fb154b4a15e1ec61, type: 3}
       propertyPath: m_LocalPosition.y
@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 1693258822}
   - component: {fileID: 1693258824}
   - component: {fileID: 1693258823}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3313,12 +3313,12 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2.56, y: 2.56}
-    newSize: {x: 9.076453, y: 2.5646288}
+    newSize: {x: 9, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 1
-  m_Size: {x: 0.85333335, y: 0.85333335}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &1953994816
 SpriteRenderer:
@@ -3366,7 +3366,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 9.076453, y: 2.5646288}
+  m_Size: {x: 9, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3380,7 +3380,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953994814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2791, y: -2.3874, z: 0}
+  m_LocalPosition: {x: 0.2791, y: -2.113, z: 0}
   m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3533,6 +3533,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ruby
       objectReference: {fileID: 0}
+    - target: {fileID: 625921489722218470, guid: 5e34eacc083a3914fbe70d0bfe8cc23e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 839489859493501205, guid: 5e34eacc083a3914fbe70d0bfe8cc23e, type: 3}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 2177067320311114804, guid: bf8ee409c9528e941b431ca0afa21c5e, type: 3}
     - target: {fileID: 8659071521185927804, guid: 5e34eacc083a3914fbe70d0bfe8cc23e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3665,11 +3673,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4004463281073511441, guid: 9c59eef14a3576f4fb154b4a15e1ec61, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 4004463281073511441, guid: 9c59eef14a3576f4fb154b4a15e1ec61, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 4004463281073511441, guid: 9c59eef14a3576f4fb154b4a15e1ec61, type: 3}
       propertyPath: m_LocalPosition.z
