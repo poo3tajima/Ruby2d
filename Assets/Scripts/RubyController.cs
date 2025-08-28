@@ -63,7 +63,42 @@ public class RubyController : MonoBehaviour
             if (invincibleTimer < 0) { isInvincible = false; }
         }
 
+        // 弾を発射
         if (Input.GetKeyDown(KeyCode.C)) { Launch(); }
+
+        // 話す
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            // rayの作成(原点、方向)
+            Ray2D ray = new Ray2D(
+                rb.position + Vector2.up * 0.2f,
+                lookDirection
+            );
+
+            // RaycastHit構造体の検出
+            // Raycast(レイの原点, 方向, 長さ, 対象レイヤー)
+            RaycastHit2D hit = Physics2D.Raycast(
+                ray.origin,
+                ray.direction,
+                1.5f,
+                LayerMask.GetMask("NPC")
+            );
+
+            // Rayを発射して確認
+            // (開始位置, 方向と長さ, 色, 表示時間)
+            // Debug.DrawRay(ray.origin, ray.direction * 1.5f, Color.green, 1f);
+
+            if (hit.collider != null)
+            {
+                // Debug.Log("Raycast has hit the object" + hit.collider.gameObject);
+                NonPlayerCharacter npc = hit.collider.GetComponent<NonPlayerCharacter>();
+
+                if (npc != null)
+                {
+                    npc.DisplayDialog();
+                }
+            }
+        }
     }
 
 
@@ -82,7 +117,9 @@ public class RubyController : MonoBehaviour
 
         // HPは0～maxの間にクランプしている
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        Debug.Log(currentHealth + "/" + maxHealth);
+        // Debug.Log(currentHealth + "/" + maxHealth);
+        // クラス名.instanceでメソッドをつかうことができる
+        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
     }
 
 

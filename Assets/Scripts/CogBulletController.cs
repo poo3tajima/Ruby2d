@@ -7,7 +7,7 @@ public class CogBulletController : MonoBehaviour
     Rigidbody2D rb;
 
 
-    // インスタンスされた直後にGetComponentしなければならない
+    // インスタンスができた直後にGetComponentしなければ間に合わない
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();

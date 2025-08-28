@@ -71,5 +71,7 @@ public class EnemyController : MonoBehaviour
         broken = false;
         // リジッドボディ2Dから物理シュミレーションを外すと動けなくなる
         rb.simulated = false;
+        anim.SetTrigger("Fixed");
+        transform.GetChild(0).GetComponent<ParticleSystem>().Stop();
     }
 }
